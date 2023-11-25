@@ -14,11 +14,15 @@ class GameViewController: UIViewController {
         return self.view as! SCNView
     }
     
+    
     var gameController: GameController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //gameView.addSubview(CartoonMonkeyModel)
         self.gameController = GameController(sceneRenderer: gameView)
         
         // Allow the user to manipulate the camera
