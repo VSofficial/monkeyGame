@@ -10,33 +10,42 @@ import SceneKit
 
 class GameViewController: UIViewController {
 
-    @IBOutlet weak var scnView: SCNView!
-    @IBOutlet weak var vc: SCNView!
     var gameView: SCNView {
         return self.view as! SCNView
     }
     
-    
     var gameController: GameController!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        guard let url = Bundle.main.url(forResource: "CartoonMonkeyModel", withExtension: "obj", subdirectory: "Art")
-             else { fatalError("Failed to find model file.") }
-
-        let asset = MDLAsset(url:url)
         
-       var object = asset.object(at: 0) as? MDLMesh
+        guard let url = Bundle.main.url(forResource: "Art.scnassets/CartoonMonkeyModel", withExtension: "obj") else {
+            print("not found")
+            return }
+        let scene = try? SCNScene(url: url, options: nil)
+
+        if let objectNode = scene?.rootNode.childNode(withName: "CartoonMonkeyModel", recursively: true) {
+            // Adjust the position, scale, or other properties of the node if needed
+            objectNode.position = SCNVector3(x: 0, y: 0, z: -2) // Example position
+            objectNode.scale = SCNVector3(x: 0.1, y: 0.1, z: 0.1) // Example scale
             
-        
+            // Add the node to your SceneKit view's scene
+           // gameView.scene!.rootNode.addChildNode(objectNode)
+            
+            // Create an SCNView
+         //   let sceneView = SCNView(frame: CGRect(x: 0, y: 0, width: 300, height: 300)) // Adjust frame size as needed
+            // Set the scene to your view
+          //  sceneView.scene = scene
+            // Add the SCNView to your view hierarchy
+         //   self.view.addSubview(sceneView)
+            
+         //   sceneView.pointOfView = gameView.pointOfView
 
-        //let newNode  = SCNNode(mdlObject: object)
-        let nnode = SCNNode(mdlobject)
-        nnode.mdlobject = object
+        }
+
+        //gameView.scene = scene
         
-        //gameView.addSubview(CartoonMonkeyModel)
+       // self.view.addSubview(gameView)
         self.gameController = GameController(sceneRenderer: gameView)
         
         // Allow the user to manipulate the camera

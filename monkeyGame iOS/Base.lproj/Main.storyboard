@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </sceneKitView>
                     <connections>
-                        <outlet property="scnView" destination="jVy-uP-6ha" id="b2l-Wo-fco"/>
+                        <outlet property="view" destination="jVy-uP-6ha" id="gzf-zj-nO0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
