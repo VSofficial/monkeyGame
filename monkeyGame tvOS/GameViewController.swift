@@ -13,6 +13,8 @@ class GameViewController: UIViewController {
     var gameView: SCNView {
         return self.view as! SCNView
     }
+    @IBOutlet var scnView: SCNView!
+    @IBOutlet var scn: SCNView!
     
     var gameController: GameController!
     

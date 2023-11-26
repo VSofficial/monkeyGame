@@ -10,6 +10,8 @@ import SceneKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var scnView: SCNView!
+    @IBOutlet weak var vc: SCNView!
     var gameView: SCNView {
         return self.view as! SCNView
     }
@@ -20,7 +22,19 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        guard let url = Bundle.main.url(forResource: "CartoonMonkeyModel", withExtension: "obj", subdirectory: "Art")
+             else { fatalError("Failed to find model file.") }
+
+        let asset = MDLAsset(url:url)
         
+       var object = asset.object(at: 0) as? MDLMesh
+            
+        
+
+        //let newNode  = SCNNode(mdlObject: object)
+        let nnode = SCNNode(mdlobject)
+        nnode.mdlobject = object
         
         //gameView.addSubview(CartoonMonkeyModel)
         self.gameController = GameController(sceneRenderer: gameView)
