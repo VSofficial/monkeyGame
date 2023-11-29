@@ -20,7 +20,7 @@ class GameController: NSObject, SCNSceneRendererDelegate {
     
     init(sceneRenderer renderer: SCNSceneRenderer) {
         sceneRenderer = renderer
-        scene = SCNScene(named: "Art.scnassets/CartoonMonkeyModel.scn")!
+        scene = SCNScene(named: "Art.scnassets/Scene.scn")!
         
         super.init()
         
